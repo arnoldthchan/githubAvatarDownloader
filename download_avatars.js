@@ -16,10 +16,11 @@ console.log('Welcome to the GitHub Avatar Downloader!\n');
 var GITHUB_USER = 'arnoldthchan';
 var GITHUB_TOKEN = 'b56d31ba5c5cb58f1f0a55a2f9d9cf22877f0603';
 
-function complete(){
-  console.log('COMPLETED!');
-  console.log();
+function downloadImageByURL(url, filePath) {
+  console.log(url);
+  console.log(filePath);
 }
+
 //Fetches contributors as a JSON list
 //Involves a callback function
 //to loop and print out avatar URLs, for each object
@@ -36,15 +37,17 @@ request(options, function(err, res, body){
   console.log('Response Status Code:', res.statusCode);
   var text = JSON.parse(body);
   for (i in text){
-    console.log(text[i].login)
-    console.log(text[i].avatar_url, '\n');
+    console.log(text[i].avatar_url);
+    console.log(`avatars/${text[i].login}`)
   }
   });
 }
 
 //https://github.com/nodejs/node
 //https://github.com/jquery/jquery
-getRepoContributors('jquery', 'jquery', function(err, result) {
-  console.log('Errors:', err);
-  console.log('Result:', result);
-});
+// getRepoContributors('jquery', 'jquery', function(err, result) {
+//   console.log('Errors:', err);
+//   console.log('Result:', result);
+// });
+
+downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
