@@ -11,11 +11,15 @@ var request = require('request');
 
 console.log('Welcome to the GitHub Avatar Downloader!');
 
+var GITHUB_USER = "arnoldthchan";
+var GITHUB_TOKEN = "b56d31ba5c5cb58f1f0a55a2f9d9cf22877f0603";
+
 //Fetches contributors as a JSON list
 //Involves a callback function
 //to loop and print out avatar URLs, for each object
 function getRepoContributors(repoOwner, repoName, callback) {
-  // ...
+  var requestURL = `https://${GITHUB_USER}:${GITHUB_TOKEN}@api.github.com/repos/${repoOwner}/${repoName}/contributors`;
+  console.log(requestURL);
 }
 
 
