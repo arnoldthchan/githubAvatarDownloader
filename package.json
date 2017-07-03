@@ -1,0 +1,22 @@
+{
+  "name": "github-avatar-downloader",
+  "version": "1.0.0",
+  "description": "downloads all the github avatars for contributors of a page",
+  "main": "download_avatars.js",
+  "scripts": {
+    "test": "node download_avatars.js nodejs node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnoldthchan/githubAvatarDownloader.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arnoldthchan/githubAvatarDownloader/issues"
+  },
+  "homepage": "https://github.com/arnoldthchan/githubAvatarDownloader#readme",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}
