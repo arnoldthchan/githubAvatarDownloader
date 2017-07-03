@@ -18,6 +18,7 @@ var GITHUB_TOKEN = 'b56d31ba5c5cb58f1f0a55a2f9d9cf22877f0603';
 
 function complete(){
   console.log('COMPLETED!');
+  console.log();
 }
 //Fetches contributors as a JSON list
 //Involves a callback function
@@ -30,16 +31,16 @@ var options = {
         }
     };
 
-request.get(options)
-       .on('error', function (err) {
-         throw err;
-       })
-       .on('response', function (response) {
-         console.log('Response Status Code: ', response.statusCode, '\nResponse Content Type:', response.headers['content-type']);
-       })
-       .pipe(fs.createWriteStream('./result.txt').on('finish', complete));
+request(options, function(err, res, body){
+  if (err) throw err;
+  console.log('Response Status Code:', res.statusCode);
+  var text = JSON.parse(body);
+  for (i in text){
+    console.log(text[i].login)
+    console.log(text[i].avatar_url, '\n');
+  }
+  });
 }
-
 
 //https://github.com/nodejs/node
 //https://github.com/jquery/jquery
