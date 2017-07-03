@@ -14,7 +14,14 @@ console.log('Welcome to the GitHub Avatar Downloader!');
 //Fetches contributors as a JSON list
 //Involves a callback function
 //to loop and print out avatar URLs, for each object
-function getRepoContributors(){
-
-  console.log('avatar_url');
+function getRepoContributors(repoOwner, repoName, callback) {
+  // ...
 }
+
+
+//https://github.com/nodejs/node
+//https://github.com/jquery/jquery
+getRepoContributors("jquery", "jquery", function(err, result) {
+  console.log("Errors:", err);
+  console.log("Result:", result);
+});
