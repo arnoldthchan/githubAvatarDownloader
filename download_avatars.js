@@ -48,10 +48,14 @@ request(options, function(err, res, body){
 
 
 //START
-getRepoContributors(owner, repo, iterateContributors);
 
 console.log('\nWelcome to the GitHub Avatar Downloader!\n');
-console.log(`Attempting download of ${repo} owned by ${owner}`);
+if (!repo || !owner){
+  console.log('Incorrect entry, please use the format:\n\tnode download_avatars.js (owner) (repo)')
+} else{
+  console.log(`Attempting download of ${repo} owned by ${owner}`);
+  getRepoContributors(owner, repo, iterateContributors);
+}
 
 //Checks if folder with foldername exist
 //If not, creates one
