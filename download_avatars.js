@@ -1,7 +1,7 @@
 // Given a GitHub repository name and owner
 // download all the contributors' profile images
 // and save them to a subdirectory, avatars
-
+require('dotenv').config();
 var request = require('request');
 var fs = require('fs');
 
@@ -9,9 +9,8 @@ var owner = process.argv[2];
 var repo = process.argv[3];
 var folders = './avatars';
 
-var GITHUB_USER = 'arnoldthchan';
-var GITHUB_TOKEN = 'b56d31ba5c5cb58f1f0a55a2f9d9cf22877f0603';
-// var API_KEY = process.env.github_API_KEY;
+var API_KEY = process.env.GITHUB_API_KEY;
+var USERNAME = process.env.GITHUB_USERNAME;
 
 function downloadImageByURL(url, filePath) {
   request.get(url)
@@ -32,7 +31,7 @@ function iterateContributors(text){
 //Requests using URL with user-agent and github user + token
 function getRepoContributors(repoOwner, repoName, cb) {
 var options = {
-        url: 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors',
+        url: 'https://'+ USERNAME + ':' + API_KEY + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors',
         headers: {
             'User-Agent': 'GitHub Avatar Downloader - Student Project'
         }
@@ -52,7 +51,7 @@ request(options, function(err, res, body){
 console.log('\nWelcome to the GitHub Avatar Downloader!\n');
 if (!repo || !owner){
   console.log('Incorrect entry, please use the format:\n\tnode download_avatars.js (owner) (repo)')
-} else{
+} else {
   console.log(`Attempting download of ${repo} owned by ${owner}`);
   getRepoContributors(owner, repo, iterateContributors);
 }
